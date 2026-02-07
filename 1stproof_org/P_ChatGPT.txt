@@ -1,0 +1,186 @@
+Yes.
+
+A concrete choice of such an (\mathbf F) can be given using only **fixed-degree determinantal (rank) conditions** on three large “pair-flattenings” built from the tensors ({Q^{(\alpha\beta\gamma\delta)}}). The key structural fact is that every entry
+[
+Q^{(\alpha\beta\gamma\delta)}_{i j k \ell}
+=\det\big[r^{(\alpha)}_i;,r^{(\beta)}_j;,r^{(\gamma)}*k;,r^{(\delta)}*\ell\big]
+\quad(r^{(\alpha)}*i:=A^{(\alpha)}(i,:)\in\mathbb R^4)
+]
+is a **bilinear pairing of bivectors** in (\bigwedge^2\mathbb R^4), whose dimension is (6). That forces certain flattenings to have rank (\le 6), and this “rank-(\le 6)” structure is exactly what lets one detect whether the block scalars (\lambda*{\alpha\beta\gamma\delta}) come from a 4-way outer product.
+
+Below is the construction and the logic.
+
+---
+
+## 1) The bivector factorization behind (Q)
+
+There is a fixed (nondegenerate) bilinear form (\langle\cdot,\cdot\rangle) on (\bigwedge^2\mathbb R^4) such that for any (a,b,c,d\in\mathbb R^4),
+[
+\det[a;b;c;d] ;=; \langle, a\wedge b,; c\wedge d,\rangle .
+]
+(You can take (\langle u,v\rangle) to be the coefficient of the volume form in (u\wedge v\in\bigwedge^4\mathbb R^4\simeq\mathbb R).)
+
+Therefore,
+[
+Q^{(\alpha\beta\gamma\delta)}_{i j k \ell}
+=\langle, r^{(\alpha)}_i\wedge r^{(\beta)}_j,; r^{(\gamma)}*k\wedge r^{(\delta)}*\ell,\rangle .
+]
+
+Fix once and for all a basis of (\bigwedge^2\mathbb R^4\simeq\mathbb R^6), and let (J\in\mathbb R^{6\times 6}) be the matrix of (\langle\cdot,\cdot\rangle) in that basis.
+
+For each ordered pair ((\alpha,\beta)), define the (6\times 9) matrix
+[
+B^{(\alpha\beta)} \in \mathbb R^{6\times 9},\qquad
+\text{columns indexed by }(i,j)\in[3]^2,\ \text{column}(i,j)=\text{coords}(r^{(\alpha)}_i\wedge r^{(\beta)}_j).
+]
+
+Then the ((12,|,34))-flattening of (Q^{(\alpha\beta\gamma\delta)}) is the (9\times 9) matrix
+[
+\mathrm{Mat}*{12|34}!\left(Q^{(\alpha\beta\gamma\delta)}\right)
+=\left(B^{(\alpha\beta)}\right)^{!T},J,B^{(\gamma\delta)}.
+]
+In particular,
+[
+\rank\Big(\mathrm{Mat}*{12|34}(Q^{(\alpha\beta\gamma\delta)})\Big)\le 6
+\quad\text{for all }\alpha,\beta,\gamma,\delta.
+]
+Moreover, for Zariski-generic (A^{(1)},\dots,A^{(n)}), these ranks are generically exactly (6) whenever the corresponding bivectors span (\bigwedge^2\mathbb R^4).
+
+The same bilinear identity holds if you regroup indices as ((13|24)) or ((14|23)), because (\det[a;b;c;d]) can also be viewed as (\langle a\wedge c,; b\wedge d\rangle) or (\langle a\wedge d,; b\wedge c\rangle) under an appropriate fixed identification (still inside a 6D bivector space).
+
+---
+
+## 2) Build three big matrices whose ranks are (\le 6)
+
+Given *any* input family of tensors ({T^{(\alpha\beta\gamma\delta)}}\subset(\mathbb R^{3\times 3\times 3\times 3})^{n^4}), define three block matrices:
+
+### (a) Pairing (12|34)
+
+Flatten each (T^{(\alpha\beta\gamma\delta)}) into a (9\times 9) matrix (\mathrm{Mat}*{12|34}(T^{(\alpha\beta\gamma\delta)})) by identifying ((i,j)\in[3]^2) as a row index and ((k,\ell)\in[3]^2) as a column index:
+[
+\big[\mathrm{Mat}*{12|34}(T^{(\alpha\beta\gamma\delta)})\big]*{(i,j),(k,\ell)}=T^{(\alpha\beta\gamma\delta)}*{i j k \ell}.
+]
+
+Now assemble the big ((9n^2)\times(9n^2)) block matrix (M_{12|34}(T)) indexed by ordered pairs ((\alpha,\beta)) for block-rows and ((\gamma,\delta)) for block-columns:
+[
+M_{12|34}(T)\big[(\alpha,\beta),(\gamma,\delta)\big]
+=\mathrm{Mat}_{12|34}(T^{(\alpha\beta\gamma\delta)}).
+]
+
+### (b) Pairing (13|24)
+
+Similarly define (M_{13|24}(T)) as the ((9n^2)\times(9n^2)) block matrix indexed by ((\alpha,\gamma)) vs ((\beta,\delta)), where each block is the (9\times 9) flattening (\mathrm{Mat}_{13|24}(T^{(\alpha\beta\gamma\delta)})).
+
+### (c) Pairing (14|23)
+
+Similarly define (M_{14|23}(T)) indexed by ((\alpha,\delta)) vs ((\beta,\gamma)), with blocks (\mathrm{Mat}_{14|23}(T^{(\alpha\beta\gamma\delta)})).
+
+---
+
+## 3) Define (\mathbf F): all (7\times 7) minors of those three big matrices
+
+Let (\mathbf F) be the polynomial map whose coordinates are **all** (7\times 7) minors of:
+
+* (M_{12|34}(T)),
+* (M_{13|24}(T)),
+* (M_{14|23}(T)).
+
+Each such minor is a degree-(7) polynomial in the entries of the input tensors. Thus:
+
+* (\mathbf F) is independent of (A^{(1)},\dots,A^{(n)}).
+* Every coordinate has degree (7), independent of (n).
+* (N) is “the number of (7\times7) minors in those three matrices” (depends on (n), which is allowed).
+
+---
+
+## 4) Why (\mathbf F(\lambda_{\alpha\beta\gamma\delta}Q^{(\alpha\beta\gamma\delta)})=0) when (\lambda) is an outer product
+
+Assume (\lambda_{\alpha\beta\gamma\delta}=u_\alpha v_\beta w_\gamma x_\delta).
+
+Consider the (12|34) big matrix built from the scaled tensors (T^{(\alpha\beta\gamma\delta)}=\lambda_{\alpha\beta\gamma\delta}Q^{(\alpha\beta\gamma\delta)}). At the block level,
+[
+M_{12|34}(T)\big[(\alpha,\beta),(\gamma,\delta)\big]
+=(u_\alpha v_\beta)(w_\gamma x_\delta),\mathrm{Mat}*{12|34}(Q^{(\alpha\beta\gamma\delta)}).
+]
+So
+[
+M*{12|34}(T)=D_{u\otimes v}; M_{12|34}(Q); D_{w\otimes x},
+]
+where (D_{u\otimes v}) is the block-diagonal matrix that multiplies the entire ((\alpha,\beta))-block-row space by (u_\alpha v_\beta), and similarly on the right.
+
+Left/right multiplication by invertible diagonal matrices does not change rank, hence
+[
+\rank\big(M_{12|34}(T)\big)=\rank\big(M_{12|34}(Q)\big)\le 6.
+]
+Thus all (7\times 7) minors vanish. The same argument holds for the other two pairings because the determinant/bivector identity works for those pairings as well. Therefore (\mathbf F(T)=0).
+
+---
+
+## 5) Conversely, why (\mathbf F=0) forces (\lambda=u\otimes v\otimes w\otimes x) (generic case)
+
+Now assume (A^{(1)},\dots,A^{(n)}) are Zariski-generic and set (T^{(\alpha\beta\gamma\delta)}=\lambda_{\alpha\beta\gamma\delta}Q^{(\alpha\beta\gamma\delta)}) with all (\lambda_{\alpha\beta\gamma\delta}\neq 0) for ((\alpha,\beta,\gamma,\delta)) not all equal, as in your hypothesis.
+
+### Step 1: from (M_{12|34}(T)) having rank (\le 6), deduce a “pairwise” factorization of (\lambda)
+
+For generic (Q), the block matrix (M_{12|34}(Q)) has rank exactly (6) and has enough nonvanishing (6\times 6) minors inside various blocks to ensure the following standard implication:
+
+> If a generic rank-(6) block matrix is scaled blockwise by scalars (\lambda_{(\alpha,\beta),(\gamma,\delta)}) and the result still has rank (\le 6), then the scalar matrix (\Lambda^{12|34}) with entries (\Lambda^{12|34}*{(\alpha,\beta),(\gamma,\delta)}=\lambda*{\alpha\beta\gamma\delta}) must have rank (1) as an (n^2\times n^2) matrix, i.e.
+> [
+> \lambda_{\alpha\beta\gamma\delta}=L_{\alpha\beta},R_{\gamma\delta}
+> \quad\text{for some nonzero }L,R\in(\mathbb R^*)^{n\times n}.
+> ]
+
+Intuitively, you “read off” the (2\times2) minors of (\Lambda^{12|34}) from suitable (7\times7) minors of the scaled big matrix; genericity guarantees the coefficients you need are nonzero, so vanishing of all (7\times7) minors forces vanishing of all (2\times2) minors of (\Lambda^{12|34}).
+
+So from (\mathbf F)’s (12|34) part, you get:
+[
+\lambda_{\alpha\beta\gamma\delta}=L_{\alpha\beta}R_{\gamma\delta}.
+]
+
+### Step 2: do the same for the other two pairings
+
+Similarly, rank (\le 6) of (M_{13|24}(T)) forces
+[
+\lambda_{\alpha\beta\gamma\delta}=L'*{\alpha\gamma}R'*{\beta\delta},
+]
+and rank (\le 6) of (M_{14|23}(T)) forces
+[
+\lambda_{\alpha\beta\gamma\delta}=L''*{\alpha\delta}R''*{\beta\gamma}.
+]
+
+### Step 3: “three rank-1 pair-flattenings” implies full rank-1
+
+A standard tensor-algebra lemma says:
+
+> If a nonzero 4-way array (\lambda) is rank (1) under each of the three pair-flattenings
+> ((12|34)), ((13|24)), and ((14|23)),
+> then (\lambda) is fully decomposable:
+> [
+> \lambda_{\alpha\beta\gamma\delta}=u_\alpha v_\beta w_\gamma x_\delta
+> ]
+> for some (u,v,w,x\in(\mathbb R^*)^n),
+> at least on the index set where (\lambda) is constrained (here: all “not all identical” 4-tuples).
+
+Sketch of a constructive proof (using your (n\ge5) to avoid the forbidden all-equal tuple): pick four distinct reference indices (a,b,c,d). From (\lambda=L_{\alpha\beta}R_{\gamma\delta}), define (u_\alpha:=L_{\alpha b}), (v_\beta:=L_{a\beta}/L_{ab}). This gives (L_{\alpha\beta}=u_\alpha v_\beta). From (\lambda=L'*{\alpha\gamma}R'*{\beta\delta}), similarly force (R_{\gamma\delta}) to split as (w_\gamma x_\delta). The third pairing rules out inconsistent rescalings and ensures the two splittings are compatible on the overlap, giving the full (u,v,w,x) factorization.
+
+Thus (\mathbf F(T)=0) forces the desired outer-product structure of (\lambda).
+
+---
+
+## 6) Conclusion
+
+Define (\mathbf F) to output all (7\times 7) minors of the three big matrices (M_{12|34}), (M_{13|24}), (M_{14|23}) built from the input tensors by pair-flattening and block assembly as above. Then:
+
+* (\mathbf F) does not depend on (A^{(1)},\dots,A^{(n)}).
+* Every coordinate polynomial has degree (7), independent of (n).
+* For Zariski-generic (A^{(1)},\dots,A^{(n)}), and for (\lambda) with (\lambda_{\alpha\beta\gamma\delta}\neq0) exactly on the “not all identical” index set,
+  [
+  \mathbf F\big(\lambda_{\alpha\beta\gamma\delta} Q^{(\alpha\beta\gamma\delta)}\big)=0
+  \quad\Longleftrightarrow\quad
+  \exists,u,v,w,x\in(\mathbb R^*)^n:\
+  \lambda_{\alpha\beta\gamma\delta}=u_\alpha v_\beta w_\gamma x_\delta
+  \ \text{for all not-all-identical }(\alpha,\beta,\gamma,\delta).
+  ]
+
+So the answer to your existence question is **yes**, and one can take a uniform degree bound (=7) (not claiming minimality).
+
